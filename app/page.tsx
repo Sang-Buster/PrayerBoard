@@ -7,7 +7,7 @@ export default function HomePage() {
       <div className="w-full max-w-lg flex flex-col items-center">
         <Image
           src="/favicon.png"
-          alt="Prayer Wall"
+          alt="Launch Logo"
           width={180}
           height={180}
           className="mb-8 w-[120px] h-[120px] sm:w-[180px] sm:h-[180px]"
