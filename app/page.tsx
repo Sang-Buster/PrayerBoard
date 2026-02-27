@@ -8,9 +8,9 @@ export default function HomePage() {
         <Image
           src="/favicon.png"
           alt="Prayer Wall"
-          width={72}
-          height={72}
-          className="mb-6"
+          width={120}
+          height={120}
+          className="mb-8 w-20 h-20 sm:w-[120px] sm:h-[120px]"
           priority
         />
         <PrayerForm />
