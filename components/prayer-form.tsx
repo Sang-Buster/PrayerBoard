@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Heart, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -94,9 +94,6 @@ export default function PrayerForm() {
     <div className="w-full max-w-lg mx-auto animate-fade-in">
       <Card>
         <CardHeader className="text-center">
-          <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-secondary">
-            <Heart className="h-6 w-6 text-foreground" />
-          </div>
           <CardTitle className="text-2xl">Share Your Prayer Request</CardTitle>
           <CardDescription className="text-base mt-2">
             Your request will be prayed over. You may share your name or remain

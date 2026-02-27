@@ -11,6 +11,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Prayer Wall",
   description: "Share your prayer request and let our community pray for you.",
+  icons: {
+    icon: "/favicon.png",
+  },
   openGraph: {
     title: "Prayer Wall",
     description: "Share your prayer request and let our community pray for you.",

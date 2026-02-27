@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Shield, Eye, EyeOff, LogIn } from "lucide-react";
+import Image from "next/image";
+import { Eye, EyeOff, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -54,12 +55,17 @@ export default function AdminLoginPage() {
 
   return (
     <div className="flex flex-1 items-center justify-center px-4 py-12">
-      <div className="w-full max-w-sm animate-fade-in">
-        <Card>
+      <div className="w-full max-w-sm animate-fade-in flex flex-col items-center">
+        <Image
+          src="/favicon.png"
+          alt="Prayer Wall"
+          width={72}
+          height={72}
+          className="mb-6"
+          priority
+        />
+        <Card className="w-full">
           <CardHeader className="text-center">
-            <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-secondary">
-              <Shield className="h-6 w-6 text-foreground" />
-            </div>
             <CardTitle className="text-xl">Admin Access</CardTitle>
             <CardDescription>
               Enter the admin password to continue.

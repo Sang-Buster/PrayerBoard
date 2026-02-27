@@ -1,9 +1,20 @@
+import Image from "next/image";
 import PrayerForm from "@/components/prayer-form";
 
 export default function HomePage() {
   return (
     <div className="flex flex-1 items-center justify-center px-4 py-12">
-      <PrayerForm />
+      <div className="w-full max-w-lg flex flex-col items-center">
+        <Image
+          src="/favicon.png"
+          alt="Prayer Wall"
+          width={72}
+          height={72}
+          className="mb-6"
+          priority
+        />
+        <PrayerForm />
+      </div>
     </div>
   );
 }
