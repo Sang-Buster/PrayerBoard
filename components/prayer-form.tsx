@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Send, EyeOff, User, MapPin } from "lucide-react";
+import { Send, EyeOff, User, MapPin, Clock, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -172,13 +172,23 @@ export default function PrayerForm() {
             </div>
 
             {/* Prayer location */}
-            <div className="flex items-center gap-3 rounded-lg border border-white/30 px-3.5 py-3">
-              <MapPin className="h-6 w-6 text-muted-foreground shrink-0" />
-              <div>
-                <p className="text-sm font-medium text-foreground">Prayer Location</p>
-                <p className="text-xs text-muted-foreground mt-0.5">
-                  Student Union, 2nd Floor - nearby the bean bags
-                </p>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">
+                Prayer Location
+              </label>
+              <div className="rounded-lg border border-white/30 px-3.5 py-3 space-y-2">
+              <div className="flex items-center gap-2.5">
+                <Clock className="h-4 w-4 text-muted-foreground shrink-0" />
+                <p className="text-xs text-muted-foreground">Mon-Fri at 6:30 AM</p>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <MapPin className="h-4 w-4 text-muted-foreground shrink-0" />
+                <p className="text-xs text-muted-foreground">Student Union, 2nd Floor</p>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Lightbulb className="h-4 w-4 text-muted-foreground shrink-0" />
+                <p className="text-xs text-muted-foreground">Near the bean bags</p>
+              </div>
               </div>
             </div>
 
