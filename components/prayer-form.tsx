@@ -78,8 +78,8 @@ export default function PrayerForm() {
             <h2 className="text-xl font-semibold mb-2">
               Thank You
             </h2>
-            <p className="text-muted-foreground mb-6">
-              Your prayer request has been received. We&apos;re praying with you.
+            <p className="text-muted-foreground mb-6 text-sm">
+              Your prayer request has been received.<br />We&apos;re praying with you.
             </p>
             <Button variant="outline" onClick={resetForm}>
               Submit Another Request
