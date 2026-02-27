@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Send } from "lucide-react";
+import { Send, EyeOff, User, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -93,35 +93,40 @@ export default function PrayerForm() {
   return (
     <div className="w-full max-w-lg mx-auto animate-fade-in">
       <Card>
-        <CardHeader className="text-center">
+        <CardHeader className="text-center pb-2">
           <CardTitle className="text-2xl">Prayer Wall - The Launch</CardTitle>
-          <CardDescription className="text-sm mt-2">
-            Your request will be prayed over. You may share your name or remain anonymous.
+          <CardDescription className="text-sm mt-1">
+            Your request will be prayed over.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
-            {/* Anonymous toggle */}
-            <div className="flex items-center gap-3">
+            {/* Identity selector — segmented control */}
+            <div className="grid grid-cols-2 rounded-lg bg-secondary/50 p-0.5 mt-4">
               <button
                 type="button"
-                role="switch"
-                aria-checked={isAnonymous}
-                aria-label="Submit anonymously"
-                onClick={() => setIsAnonymous(!isAnonymous)}
-                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors cursor-pointer ${
-                  isAnonymous ? "bg-foreground" : "bg-border"
+                onClick={() => setIsAnonymous(false)}
+                className={`flex items-center justify-center gap-2 rounded-md py-2.5 text-sm font-medium transition-all cursor-pointer ${
+                  !isAnonymous
+                    ? "bg-background text-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                <span
-                  className={`inline-block h-4 w-4 transform rounded-full bg-background transition-transform ${
-                    isAnonymous ? "translate-x-6" : "translate-x-1"
-                  }`}
-                />
+                <User className="h-4 w-4" />
+                With Name
               </button>
-              <label className="text-sm text-foreground cursor-pointer" onClick={() => setIsAnonymous(!isAnonymous)}>
-                Submit anonymously
-              </label>
+              <button
+                type="button"
+                onClick={() => setIsAnonymous(true)}
+                className={`flex items-center justify-center gap-2 rounded-md py-2.5 text-sm font-medium transition-all cursor-pointer ${
+                  isAnonymous
+                    ? "bg-background text-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <EyeOff className="h-4 w-4" />
+                Anonymous
+              </button>
             </div>
 
             {/* Name input - conditionally shown */}
@@ -164,6 +169,17 @@ export default function PrayerForm() {
               <p className="text-xs text-muted-foreground text-right">
                 {request.length}/2000
               </p>
+            </div>
+
+            {/* Prayer location */}
+            <div className="flex items-center gap-3 rounded-lg border border-white/30 px-3.5 py-3">
+              <MapPin className="h-6 w-6 text-muted-foreground shrink-0" />
+              <div>
+                <p className="text-sm font-medium text-foreground">Prayer Location</p>
+                <p className="text-xs text-muted-foreground mt-0.5">
+                  Student Union, 2nd Floor - nearby the bean bags
+                </p>
+              </div>
             </div>
 
             {/* Error message */}
