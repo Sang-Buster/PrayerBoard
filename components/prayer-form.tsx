@@ -95,9 +95,8 @@ export default function PrayerForm() {
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">Prayer Wall - The Launch</CardTitle>
-          <CardDescription className="text-base mt-2">
-            Your request will be prayed over. You may share your name or remain
-            anonymous.
+          <CardDescription className="text-sm mt-2">
+            Your request will be prayed over. You may share your name or remain anonymous.
           </CardDescription>
         </CardHeader>
         <CardContent>
