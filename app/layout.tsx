@@ -34,7 +34,7 @@ export default function RootLayout({
         <main className="min-h-screen flex flex-col">
           <div className="flex-1 flex flex-col">{children}</div>
           <footer className="py-6 text-center text-sm text-muted-foreground">
-            Built with love for our community
+            Built with ❤️ for our community
           </footer>
         </main>
       </body>

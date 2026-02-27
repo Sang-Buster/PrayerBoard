@@ -89,13 +89,13 @@ export default function StatsCards({ onStatsLoaded }: StatsCardsProps) {
         return (
           <Card key={card.label}>
             <CardContent className="p-6">
-              <div className="flex items-center justify-between">
-                <p className="text-sm text-muted-foreground">{card.label}</p>
-                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-secondary">
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-sm text-muted-foreground truncate">{card.label}</p>
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-secondary">
                   <Icon className="h-4 w-4 text-foreground" />
                 </div>
               </div>
-              <p className="mt-2 text-3xl font-semibold">
+              <p className="mt-3 text-3xl font-semibold">
                 {card.format(card.value)}
               </p>
             </CardContent>

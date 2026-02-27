@@ -94,7 +94,7 @@ export default function PrayerForm() {
     <div className="w-full max-w-lg mx-auto animate-fade-in">
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Share Your Prayer Request</CardTitle>
+          <CardTitle className="text-2xl">Prayer Wall - The Launch</CardTitle>
           <CardDescription className="text-base mt-2">
             Your request will be prayed over. You may share your name or remain
             anonymous.

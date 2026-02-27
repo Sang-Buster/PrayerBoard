@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { insertPrayer, getPrayers } from "@/lib/db";
+import { insertPrayer, getPrayers, updatePrayer, togglePinPrayer, getAllPrayersForExport } from "@/lib/db";
 import { verifyAuthFromRequest } from "@/lib/auth";
 
 // In-memory rate limiting
@@ -111,8 +111,33 @@ export async function GET(request: NextRequest) {
       100,
       Math.max(1, parseInt(searchParams.get("limit") || "20", 10))
     );
+    const search = searchParams.get("search") || undefined;
+    const exportAll = searchParams.get("export") === "csv";
 
-    const result = await getPrayers(page, limit);
+    if (exportAll) {
+      const prayers = await getAllPrayersForExport();
+      const csvHeader = "ID,Name,Request,Anonymous,Pinned,Date";
+      const csvRows = prayers.map((p) => {
+        const escapeCsv = (s: string) => `"${s.replace(/"/g, '""')}"`;
+        return [
+          p.id,
+          escapeCsv(p.name),
+          escapeCsv(p.request),
+          p.is_anonymous,
+          p.is_pinned,
+          p.created_at,
+        ].join(",");
+      });
+      const csv = [csvHeader, ...csvRows].join("\n");
+      return new NextResponse(csv, {
+        headers: {
+          "Content-Type": "text/csv",
+          "Content-Disposition": `attachment; filename="prayers-export.csv"`,
+        },
+      });
+    }
+
+    const result = await getPrayers(page, limit, search);
 
     return NextResponse.json(result);
   } catch (error) {
@@ -123,3 +148,54 @@ export async function GET(request: NextRequest) {
     );
   }
 }
+
+// PATCH - Auth required: update a prayer request
+export async function PATCH(request: NextRequest) {
+  try {
+    if (!verifyAuthFromRequest(request)) {
+      return NextResponse.json(
+        { success: false, message: "Unauthorized" },
+        { status: 401 }
+      );
+    }
+
+    const body = await request.json();
+    const { id, request: prayerRequest, action, pinned } = body;
+
+    // Handle toggle pin
+    if (action === "toggle-pin" && id && typeof pinned === "boolean") {
+      await togglePinPrayer(id, pinned);
+      return NextResponse.json({ success: true, message: "Prayer pin toggled" });
+    }
+
+    if (!id || typeof id !== "number") {
+      return NextResponse.json(
+        { success: false, message: "Prayer ID is required." },
+        { status: 400 }
+      );
+    }
+
+    if (
+      !prayerRequest ||
+      typeof prayerRequest !== "string" ||
+      prayerRequest.trim().length === 0
+    ) {
+      return NextResponse.json(
+        { success: false, message: "Prayer request text is required." },
+        { status: 400 }
+      );
+    }
+
+    await updatePrayer(id, prayerRequest.trim());
+
+    return NextResponse.json({ success: true, message: "Prayer updated" });
+  } catch (error) {
+    console.error("Error updating prayer:", error);
+    return NextResponse.json(
+      { success: false, message: "An error occurred." },
+      { status: 500 }
+    );
+  }
+}
+
+

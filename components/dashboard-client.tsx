@@ -58,9 +58,7 @@ export default function DashboardClient() {
 
       {/* Prayer List */}
       <div>
-        <h2 className="text-xl font-semibold mb-4">
-          Recent Prayer Requests
-        </h2>
+        <h2 className="text-xl font-semibold mb-4">Prayer Requests</h2>
         <PrayerList />
       </div>
     </div>

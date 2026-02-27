@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import {
   AreaChart,
   Area,
@@ -22,6 +23,15 @@ interface PrayerChartProps {
 }
 
 export default function PrayerChart({ dailyCounts }: PrayerChartProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   if (!dailyCounts || dailyCounts.length === 0) {
     return null;
   }
@@ -34,20 +44,25 @@ export default function PrayerChart({ dailyCounts }: PrayerChartProps) {
     }),
   }));
 
+  // Show fewer ticks on mobile to avoid overlap
+  const tickInterval = isMobile
+    ? Math.max(Math.floor(formattedData.length / 4), 1)
+    : Math.max(Math.floor(formattedData.length / 8), 1);
+
   return (
     <Card className="animate-fade-in">
       <CardHeader>
         <div className="flex items-center gap-2">
           <BarChart3 className="h-5 w-5 text-muted-foreground" />
-          <CardTitle className="text-lg">Prayers Over the Last 30 Days</CardTitle>
+          <CardTitle className="text-lg">Prayer Activity</CardTitle>
         </div>
       </CardHeader>
       <CardContent>
-        <div className="h-[250px] w-full">
+        <div className="h-48 sm:h-64 w-full">
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               data={formattedData}
-              margin={{ top: 5, right: 10, left: -20, bottom: 0 }}
+              margin={{ top: 5, right: 10, left: isMobile ? -25 : -20, bottom: 0 }}
             >
               <defs>
                 <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
@@ -58,10 +73,10 @@ export default function PrayerChart({ dailyCounts }: PrayerChartProps) {
               <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
               <XAxis
                 dataKey="label"
-                tick={{ fontSize: 11, fill: "#71717a" }}
+                tick={{ fontSize: isMobile ? 10 : 11, fill: "#71717a" }}
                 tickLine={false}
                 axisLine={{ stroke: "#27272a" }}
-                interval="preserveStartEnd"
+                interval={tickInterval}
               />
               <YAxis
                 tick={{ fontSize: 11, fill: "#71717a" }}
