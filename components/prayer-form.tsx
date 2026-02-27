@@ -75,10 +75,10 @@ export default function PrayerForm() {
         <Card>
           <CardContent className="p-8 text-center">
             <div className="mb-4 text-4xl">🙏</div>
-            <h2 className="text-xl font-semibold font-heading mb-2">
+            <h2 className="text-xl font-semibold mb-2">
               Thank You
             </h2>
-            <p className="text-muted mb-6">
+            <p className="text-muted-foreground mb-6">
               Your prayer request has been received. We&apos;re praying with you.
             </p>
             <Button variant="outline" onClick={resetForm}>
@@ -94,8 +94,8 @@ export default function PrayerForm() {
     <div className="w-full max-w-lg mx-auto animate-fade-in">
       <Card>
         <CardHeader className="text-center">
-          <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-accent-light">
-            <Heart className="h-6 w-6 text-accent" />
+          <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-secondary">
+            <Heart className="h-6 w-6 text-foreground" />
           </div>
           <CardTitle className="text-2xl">Share Your Prayer Request</CardTitle>
           <CardDescription className="text-base mt-2">
@@ -114,16 +114,16 @@ export default function PrayerForm() {
                 aria-label="Submit anonymously"
                 onClick={() => setIsAnonymous(!isAnonymous)}
                 className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors cursor-pointer ${
-                  isAnonymous ? "bg-accent" : "bg-warm-border"
+                  isAnonymous ? "bg-foreground" : "bg-border"
                 }`}
               >
                 <span
-                  className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                  className={`inline-block h-4 w-4 transform rounded-full bg-background transition-transform ${
                     isAnonymous ? "translate-x-6" : "translate-x-1"
                   }`}
                 />
               </button>
-              <label className="text-sm text-charcoal cursor-pointer" onClick={() => setIsAnonymous(!isAnonymous)}>
+              <label className="text-sm text-foreground cursor-pointer" onClick={() => setIsAnonymous(!isAnonymous)}>
                 Submit anonymously
               </label>
             </div>
@@ -133,7 +133,7 @@ export default function PrayerForm() {
               <div className="space-y-2 animate-fade-in">
                 <label
                   htmlFor="name"
-                  className="text-sm font-medium text-charcoal"
+                  className="text-sm font-medium text-foreground"
                 >
                   Your Name
                 </label>
@@ -152,9 +152,9 @@ export default function PrayerForm() {
             <div className="space-y-2">
               <label
                 htmlFor="prayer-request"
-                className="text-sm font-medium text-charcoal"
+                className="text-sm font-medium text-foreground"
               >
-                Prayer Request <span className="text-accent">*</span>
+                Prayer Request <span className="text-muted-foreground">*</span>
               </label>
               <Textarea
                 id="prayer-request"
@@ -165,14 +165,14 @@ export default function PrayerForm() {
                 required
                 rows={5}
               />
-              <p className="text-xs text-muted text-right">
+              <p className="text-xs text-muted-foreground text-right">
                 {request.length}/2000
               </p>
             </div>
 
             {/* Error message */}
             {status === "error" && errorMessage && (
-              <p className="text-sm text-red-600 animate-fade-in" role="alert">
+              <p className="text-sm text-destructive animate-fade-in" role="alert">
                 {errorMessage}
               </p>
             )}

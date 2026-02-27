@@ -1,27 +1,30 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-warm-bg: #FAFAF8;
-  --color-warm-white: #FFFFFF;
-  --color-charcoal: #1A1A1A;
-  --color-muted: #6B6B6B;
-  --color-accent: #5B7F95;
-  --color-accent-light: #e8f0f5;
-  --color-warm-border: #E8E5E0;
-  --color-warm-shadow: rgba(0, 0, 0, 0.04);
+  --color-background: #09090b;
+  --color-foreground: #fafafa;
+  --color-card: #0a0a0a;
+  --color-card-foreground: #fafafa;
+  --color-muted: #a1a1aa;
+  --color-muted-foreground: #71717a;
+  --color-border: #27272a;
+  --color-input: #27272a;
+  --color-ring: #d4d4d8;
+  --color-primary: #fafafa;
+  --color-primary-foreground: #09090b;
+  --color-secondary: #27272a;
+  --color-secondary-foreground: #fafafa;
+  --color-destructive: #ef4444;
+  --color-accent-bg: #27272a;
+  --color-accent-foreground: #fafafa;
 
-  --font-heading: var(--font-lora);
-  --font-body: var(--font-dm-sans);
+  --font-sans: var(--font-inter);
 }
 
 body {
-  background-color: var(--color-warm-bg);
-  color: var(--color-charcoal);
-  font-family: var(--font-body), system-ui, sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading), Georgia, serif;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Fade-in animation */

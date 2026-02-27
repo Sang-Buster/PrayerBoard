@@ -53,12 +53,12 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center px-4 py-20">
+    <div className="flex flex-1 items-center justify-center px-4 py-12">
       <div className="w-full max-w-sm animate-fade-in">
         <Card>
           <CardHeader className="text-center">
-            <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-accent-light">
-              <Shield className="h-6 w-6 text-accent" />
+            <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-secondary">
+              <Shield className="h-6 w-6 text-foreground" />
             </div>
             <CardTitle className="text-xl">Admin Access</CardTitle>
             <CardDescription>
@@ -70,7 +70,7 @@ export default function AdminLoginPage() {
               <div className="space-y-2">
                 <label
                   htmlFor="password"
-                  className="text-sm font-medium text-charcoal"
+                  className="text-sm font-medium text-foreground"
                 >
                   Password
                 </label>
@@ -87,7 +87,7 @@ export default function AdminLoginPage() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-charcoal transition-colors cursor-pointer"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                     aria-label={
                       showPassword ? "Hide password" : "Show password"
                     }
@@ -102,7 +102,7 @@ export default function AdminLoginPage() {
               </div>
 
               {error && (
-                <p className="text-sm text-red-600 animate-fade-in" role="alert">
+                <p className="text-sm text-destructive animate-fade-in" role="alert">
                   {error}
                 </p>
               )}

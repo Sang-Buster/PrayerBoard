@@ -32,7 +32,7 @@ export default function DashboardClient() {
     <div className="max-w-6xl mx-auto px-4 py-8 sm:py-12 space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl sm:text-3xl font-semibold font-heading">
+        <h1 className="text-2xl sm:text-3xl font-semibold">
           Prayer Dashboard
         </h1>
         <Button
@@ -58,7 +58,7 @@ export default function DashboardClient() {
 
       {/* Prayer List */}
       <div>
-        <h2 className="text-xl font-semibold font-heading mb-4">
+        <h2 className="text-xl font-semibold mb-4">
           Recent Prayer Requests
         </h2>
         <PrayerList />

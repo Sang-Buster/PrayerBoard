@@ -72,8 +72,8 @@ export default function StatsCards({ onStatsLoaded }: StatsCardsProps) {
           <Card key={i}>
             <CardContent className="p-6">
               <div className="animate-pulse space-y-3">
-                <div className="h-4 w-20 bg-warm-border rounded" />
-                <div className="h-8 w-16 bg-warm-border rounded" />
+                <div className="h-4 w-20 bg-secondary rounded" />
+                <div className="h-8 w-16 bg-secondary rounded" />
               </div>
             </CardContent>
           </Card>
@@ -90,12 +90,12 @@ export default function StatsCards({ onStatsLoaded }: StatsCardsProps) {
           <Card key={card.label}>
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
-                <p className="text-sm text-muted">{card.label}</p>
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-light">
-                  <Icon className="h-4 w-4 text-accent" />
+                <p className="text-sm text-muted-foreground">{card.label}</p>
+                <div className="flex h-8 w-8 items-center justify-center rounded-md bg-secondary">
+                  <Icon className="h-4 w-4 text-foreground" />
                 </div>
               </div>
-              <p className="mt-2 text-3xl font-semibold font-heading">
+              <p className="mt-2 text-3xl font-semibold">
                 {card.format(card.value)}
               </p>
             </CardContent>

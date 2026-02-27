@@ -38,7 +38,7 @@ export default function PrayerChart({ dailyCounts }: PrayerChartProps) {
     <Card className="animate-fade-in">
       <CardHeader>
         <div className="flex items-center gap-2">
-          <BarChart3 className="h-5 w-5 text-accent" />
+          <BarChart3 className="h-5 w-5 text-muted-foreground" />
           <CardTitle className="text-lg">Prayers Over the Last 30 Days</CardTitle>
         </div>
       </CardHeader>
@@ -51,39 +51,39 @@ export default function PrayerChart({ dailyCounts }: PrayerChartProps) {
             >
               <defs>
                 <linearGradient id="colorCount" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#5B7F95" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#5B7F95" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#fafafa" stopOpacity={0.15} />
+                  <stop offset="95%" stopColor="#fafafa" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#E8E5E0" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
               <XAxis
                 dataKey="label"
-                tick={{ fontSize: 11, fill: "#6B6B6B" }}
+                tick={{ fontSize: 11, fill: "#71717a" }}
                 tickLine={false}
-                axisLine={{ stroke: "#E8E5E0" }}
+                axisLine={{ stroke: "#27272a" }}
                 interval="preserveStartEnd"
               />
               <YAxis
-                tick={{ fontSize: 11, fill: "#6B6B6B" }}
+                tick={{ fontSize: 11, fill: "#71717a" }}
                 tickLine={false}
                 axisLine={false}
                 allowDecimals={false}
               />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "#FFFFFF",
-                  border: "1px solid #E8E5E0",
+                  backgroundColor: "#0a0a0a",
+                  border: "1px solid #27272a",
                   borderRadius: "8px",
                   fontSize: "13px",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.4)",
                 }}
-                labelStyle={{ color: "#1A1A1A", fontWeight: 600 }}
-                itemStyle={{ color: "#5B7F95" }}
+                labelStyle={{ color: "#fafafa", fontWeight: 600 }}
+                itemStyle={{ color: "#a1a1aa" }}
               />
               <Area
                 type="monotone"
                 dataKey="count"
-                stroke="#5B7F95"
+                stroke="#fafafa"
                 strokeWidth={2}
                 fillOpacity={1}
                 fill="url(#colorCount)"

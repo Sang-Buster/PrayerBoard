@@ -63,9 +63,9 @@ export default function PrayerList() {
           <Card key={i}>
             <CardContent className="p-6">
               <div className="animate-pulse space-y-3">
-                <div className="h-4 w-24 bg-warm-border rounded" />
-                <div className="h-4 w-full bg-warm-border rounded" />
-                <div className="h-4 w-2/3 bg-warm-border rounded" />
+                <div className="h-4 w-24 bg-secondary rounded" />
+                <div className="h-4 w-full bg-secondary rounded" />
+                <div className="h-4 w-2/3 bg-secondary rounded" />
               </div>
             </CardContent>
           </Card>
@@ -78,7 +78,7 @@ export default function PrayerList() {
     return (
       <Card>
         <CardContent className="p-8 text-center">
-          <p className="text-muted">
+          <p className="text-muted-foreground">
             No prayer requests yet. They&apos;ll appear here as they come in.
           </p>
         </CardContent>
@@ -99,16 +99,16 @@ export default function PrayerList() {
                     Anonymous
                   </Badge>
                 ) : (
-                  <span className="text-sm font-medium text-charcoal">
+                  <span className="text-sm font-medium text-foreground">
                     {prayer.name}
                   </span>
                 )}
               </div>
-              <span className="text-xs text-muted whitespace-nowrap">
+              <span className="text-xs text-muted-foreground whitespace-nowrap">
                 {timeAgo(prayer.created_at)}
               </span>
             </div>
-            <p className="text-sm text-charcoal/80 leading-relaxed whitespace-pre-wrap">
+            <p className="text-sm text-muted leading-relaxed whitespace-pre-wrap">
               {prayer.request}
             </p>
           </CardContent>
