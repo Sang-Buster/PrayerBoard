@@ -271,8 +271,7 @@ export default function PrayerList() {
                   <div className="flex items-center gap-1">
                     <Button
                       variant="ghost"
-                      size="icon"
-                      className="h-7 w-7"
+                      className="h-7 w-7 p-0"
                       title={prayer.is_pinned ? "Unpin" : "Pin to top"}
                       onClick={() => handleTogglePin(prayer)}
                       disabled={togglingPinId === prayer.id}
@@ -287,8 +286,7 @@ export default function PrayerList() {
                     </Button>
                     <Button
                       variant="ghost"
-                      size="icon"
-                      className="h-7 w-7"
+                      className="h-7 w-7 p-0"
                       onClick={() => startEditing(prayer)}
                     >
                       <Pencil className="h-3.5 w-3.5 text-muted-foreground" />
